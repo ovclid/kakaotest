@@ -6,6 +6,55 @@
         <div id="map" style="width:100%;height:300px;"></div>
         
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56dd36038680e4d6f7b1cbc67b011a06&libraries=services"></script>
+
+        <script>
+    		//var base_center = new kakao.maps.LatLng(36.858351739006984, 127.44549719302887)
+    		let base_Lat =   36.62800617644608;  // 청주(36.62800617644608)   음성무극시장(36.9916485888649;) 영동전통시장(36.17502542411789;) 
+    		let base_Lng =  127.48765858859254;   // 청주(127.48765858859254)   음성무극시장(127.596105990174;)    영동전통시장(127.77580277515723;)
+    	
+    		function setPosition(position) {
+    			base_Lat = position.coords.latitude;
+    			base_Lng = position.coords.longitude;
+    	
+    			console.log(position.coords.latitude)
+    			console.log(position.coords.longitude)
+    
+        		base_center = new kakao.maps.LatLng(base_Lat, base_Lng);
+        		map.setCenter(base_center)
         
+        		var currentPosMarker = new kakao.maps.Marker({
+                        	map: map,
+                        	position: base_center
+                    	});
+        		
+        		currentPosMarker.setMap(map);
+    
+    		    // 커스텀 오버레이를 생성합니다
+                var customOverlay = new kakao.maps.CustomOverlay({
+                    map: map,
+                    position: base_center,
+                    content: '<div class = "currentpos_overlay">' + '현위치 인근'  + '</div>',                    
+                    yAnchor: 3.0
+                })
+            }
+    
+    	    	// 뒤의 코드가 실행되고(지도가 그려지고) 나서 나중에 천천히 적용됨
+                //navigator.geolocation.getCurrentPosition(success = setPosition, error = undefined, options = undefined);
+    
+            let base_center = new kakao.maps.LatLng(base_Lat, base_Lng);
+            var mapContainer = document.getElementById('map');
+            var mapOption = {
+                center: base_center,    // 지도의 중심좌표
+                level: 5                // 지도의 확대 레벨(숫자가 커질 수록 지도 축소)
+            };  
+        
+            // 지도 생성    
+            var map = new kakao.maps.Map(mapContainer, mapOption); 
+            var mapTypeControl = new kakao.maps.MapTypeControl();    
+            var polygonPath = Object.assign({}, polygonPath_Main, polygonPath_Middle, polygonPath_East, polygonPath_West, polygonPath_North, polygonPath_South);
+            var markers_list = [];
+
+            var market_polygon_markers = [];
+        </script>      
     </body>
 </html>
