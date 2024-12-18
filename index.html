@@ -6,11 +6,17 @@
         <div id="map" style="width:100%;height:300px;"></div>
         
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56dd36038680e4d6f7b1cbc67b011a06&libraries=services"></script>
-        <button onclick="showMarketMarkers()">전통시장 보이기</button>
+        <button onclick="showMarketMarkers("시장")">전통시장 보이기</button>
+        <button onclick="showMarketMarkers("착한업소")">착한업소 보이기</button>
         <script>
 
-            function showMarketMarkers(){
-                console.log("전통시장 보이기");
+            function showMarketMarkers(type){
+                if (type == "시장") {
+                    console.log("전통시장 보이기");
+                }
+                else {
+                    console.log("착한가격업소 보이기");
+                }
             };
             
     		//var base_center = new kakao.maps.LatLng(36.858351739006984, 127.44549719302887)
