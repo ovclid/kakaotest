@@ -6,8 +6,13 @@
         <div id="map" style="width:100%;height:300px;"></div>
         
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56dd36038680e4d6f7b1cbc67b011a06&libraries=services"></script>
-
+        <button onclick="showMarketMarkers()">전통시장 보이기</button>
         <script>
+
+            function showMarketMarkers(){
+                console.log("전통시장 보이기");
+            };
+            
     		//var base_center = new kakao.maps.LatLng(36.858351739006984, 127.44549719302887)
     		let base_Lat =   36.62800617644608;  // 청주(36.62800617644608)   음성무극시장(36.9916485888649;) 영동전통시장(36.17502542411789;) 
     		let base_Lng =  127.48765858859254;   // 청주(127.48765858859254)   음성무극시장(127.596105990174;)    영동전통시장(127.77580277515723;)
